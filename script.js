@@ -107,17 +107,65 @@ function clearStatusClass(element) {
 //This controls the progrss bar
 function nextStep(progressBar) {
     if(currentQuestionIndex == 0) {
-        document.getElementById(progressBar).value = 25;
+        var elem = document.getElementById(progressBar);
+        var width = 0;
+        var id = setInterval(frame, 10);
+        function frame() {
+          if (width >= 25) {
+            clearInterval(id);
+            i = 0;
+          } else {
+            width++;
+            elem.style.width = width + "%";
+            elem.innerHTML = width  + "%";
+      }
+    }
     }
     else if(currentQuestionIndex == 1 ) {
-       document.getElementById(progressBar).value = 50;
+      var elem = document.getElementById(progressBar);
+      var width = 25;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 50) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+          elem.innerHTML = width  + "%";
+    }
+  }
        }
     else if(currentQuestionIndex == 2 ) {
-      document.getElementById(progressBar).value = 75;
-          }
+      var elem = document.getElementById(progressBar);
+      var width = 50;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 75) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+          elem.innerHTML = width  + "%";
+    }
+  }
+       }
     else if(currentQuestionIndex == 3 ) {
-      document.getElementById(progressBar).value = 100;
-             }
+      var elem = document.getElementById(progressBar);
+      var width = 75;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= 100) {
+          clearInterval(id);
+          i = 0;
+        } else {
+          width++;
+          elem.style.width = width + "%";
+          elem.innerHTML = width  + "%";
+    }
+  }
+       }
 }
 
 const questions = [
