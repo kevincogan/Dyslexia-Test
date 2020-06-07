@@ -1,5 +1,5 @@
 const startButton = document.getElementById('start-btn')
-const restartButton = document.getElementById('restart-btn')
+const gobackButton = document.getElementById('goback-btn')
 const nextButton = document.getElementById('next-btn')
 const questionContainerElement = document.getElementById('question-container')
 const questionElement = document.getElementById('question')
@@ -8,12 +8,13 @@ const answerButtonsElement = document.getElementById('answer-buttons')
 let currentQuestionIndex
 
 startButton.addEventListener('click', startGame)
+gobackButton.classList.add('hide')
 nextButton.addEventListener('click', () => {
   currentQuestionIndex++
   setNextQuestion()
 })
 
-restartButton.addEventListener('click', restartGame)
+gobackButton.addEventListener('click', gobackGame)
 nextButton.addEventListener('click', () => {
   setNextQuestion()
 })
@@ -22,19 +23,37 @@ function startGame() {
   startButton.classList.add('hide')
   currentQuestionIndex = 0
   questionContainerElement.classList.remove('hide')
+  gobackButton.classList.add('hide')
   setNextQuestion()
 }
 
-function restartGame() {
-  restartButton.classList.add('hide')
-  currentQuestionIndex = 0
-  questionContainerElement.classList.remove('hide')
+function gobackGame() {
+  //restartButton.classList.add('hide')
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex = currentQuestionIndex -1
+    gobackButton.classList.add('hide')
+    startButton.classList.add('hide')
+
+  } else {
+    currentQuestionIndex = currentQuestionIndex
+  }
+  //questionContainerElement.classList.remove('hide')
   setNextQuestion()
 }
 
 function setNextQuestion() {
   resetState()
-  showQuestion(questions[currentQuestionIndex])
+  if (currentQuestionIndex == 4) {
+    questionElement.innerText = "You are finished"
+    startButton.innerText = 'Restart'
+    startButton.classList.remove('hide')
+    }else {
+      showQuestion(questions[currentQuestionIndex])
+      if (currentQuestionIndex > 0) {
+        gobackButton.classList.remove('hide')
+      }
+
+    }
 }
 
 function showQuestion(question) {
@@ -68,9 +87,6 @@ function selectAnswer(e) {
   })
   if (questions.length > currentQuestionIndex + 1) {
     nextButton.classList.remove('hide')
-  } else {
-    restartButton.innerText = 'Restart'
-    restartButton.classList.remove('hide')
   }
 }
 
@@ -90,13 +106,18 @@ function clearStatusClass(element) {
 
 //This controls the progrss bar
 function nextStep(progressBar) {
-    if(document.getElementById(progressBar).value  >= 100) {
-        document.getElementById(progressBar).value = 0;
+    if(currentQuestionIndex == 0) {
+        document.getElementById(progressBar).value = 25;
     }
-    else {
-       document.getElementById(progressBar).value += 25;
-
+    else if(currentQuestionIndex == 1 ) {
+       document.getElementById(progressBar).value = 50;
        }
+    else if(currentQuestionIndex == 2 ) {
+      document.getElementById(progressBar).value = 75;
+          }
+    else if(currentQuestionIndex == 3 ) {
+      document.getElementById(progressBar).value = 100;
+             }
 }
 
 const questions = [
@@ -126,6 +147,14 @@ const questions = [
   },
   {
     question: 'What is 4 * 2?',
+    answers: [
+      { text: '6', correct: false },
+      { text: '8', correct: true },
+      { text: 'Fun Fun Function', correct: true }
+    ]
+  },
+  {
+    question: 'You are finished!',
     answers: [
       { text: '6', correct: false },
       { text: '8', correct: true },

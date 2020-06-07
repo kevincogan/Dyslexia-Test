@@ -50,9 +50,17 @@ body.wrong {
 /* Styles all elements inside the container */
 .container-2 {
   position: absolute;
-  bottom: 37%;
+  bottom: 30%;
 
 
+}
+.goback-btn {
+  position: static;
+}
+
+.next-btn{
+  position: absolute;
+  left: 250px;
 }
 
 /* Styles the positioning of the buttons */
@@ -91,7 +99,7 @@ body.wrong {
   --hue: var(--hue-wrong);
 }
 
-.start-btn, .next-btn {
+.start-btn, .next-btn, .goback-btn {
   font-size: 1.5rem;
   font-weight: bold;
   padding: 10px 20px;
