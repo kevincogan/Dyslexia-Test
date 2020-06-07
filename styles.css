@@ -1,0 +1,114 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: Arial;
+}
+/* pre-set colours used with hue*/
+:root {
+  --hue-neutral: 274;
+  --hue-button-colour: 23;
+  --hue-wrong: 0;
+  --hue-correct: 145;
+  --hue-yellow: 49;
+}
+/* Styles the background of the page*/
+body {
+  --hue: var(--hue-neutral);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(var(--hue), 100%, 20%);
+}
+/* If the answer is correct this style will be implemented*/
+body.correct {
+  --hue: var(--hue-correct);
+}
+
+/* If the answer is wrong this style will be implemented*/
+body.wrong {
+  --hue: var(--hue-wrong);
+}
+
+/* Styles all elements inside the container */
+.container-1 {
+  position: 45%;
+  width: 800px;
+  max-width: 80%;
+  background-color: hsl(49, 100%, 54%);
+  border-radius: 100px;
+  padding: 10px;
+  box-shadow: 0 0 10px 2px;
+
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Styles all elements inside the container */
+.container-2 {
+  position: absolute;
+  bottom: 37%;
+
+
+}
+
+/* Styles the positioning of the buttons */
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 25%);
+  gap: 10px;
+  margin: 20px 0;
+
+  text-align: center;
+  position: relative;
+  left: 10%;
+}
+/* Styles the buttons*/
+.btn {
+  --hue: var(--hue-button-colour);
+  border: 1px solid hsl(var(--hue), 100%, 30%);
+  background-color: hsl(var(--hue), 100%, 50%);
+  border-radius: 20px;
+  padding: 10px 5px;
+  color: white;
+  outline: none;
+}
+
+/*controls the hover-border over the buttons*/
+.btn:hover {
+  border-color: orange;
+}
+
+.btn.correct {
+  --hue: var(--hue-correct);
+  color: black;
+}
+
+.btn.wrong {
+  --hue: var(--hue-wrong);
+}
+
+.start-btn, .next-btn {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px 20px;
+}
+
+.controls-start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls-next {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}

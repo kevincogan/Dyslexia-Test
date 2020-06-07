@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="styles.css" rel="stylesheet">
+  <script defer src="script.js"></script>
+  <title>Quiz App</title>
+</head>
+<body>
+  <!--controls the progress bar -->
+  <div>
+    <progress id="spBar" min="0" max ="100" value ="0"></progress>
+  </div>
+
+  <div class="container-1">
+    <div id="question-container" class="hide">
+      <div id="question">Question</div>
+      <div id="answer-buttons" class="btn-grid">
+        <button class="btn">Answer 1</button>
+        <button class="btn">Answer 2</button>
+        <button class="btn">Answer 3</button>
+      </div>
+    </div>
+    <div class="controls-start">
+      <!-- onclick controls when to increase the progress bar -->
+      <button id="start-btn" class="start-btn btn" onclick="nextStep('spBar')">Start</button>
+      <button id="restart-btn" class="restart-btn btn" >Start</button>
+    </div>
+  </div>
+
+  <div class="container-2">
+    <div class="controls-next">
+      <!-- onclick controls when to increase the progress bar -->
+      <button id="next-btn" class="next-btn btn hide" onclick="nextStep('spBar')">Next</button>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
